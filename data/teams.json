@@ -1,0 +1,41 @@
+[
+    {
+    "id": "rea",
+    "division": "recreational",
+    "name": "REA"
+    },
+    {
+    "id": "rmbz",
+    "division": "recreational",
+    "name": "RMBZ"
+    },
+    {
+    "id": "scar-jax",
+    "division": "recreational",
+    "name": "ScarJax"
+    },
+    { "id": "bbk",
+    "division": "recreational",
+    "name": "BBK"
+    },
+    {
+    "id": "iron-bulls",
+    "division": "recreational",
+    "name": "Iron Bulls"
+    },
+    {
+    "id": "scar-bears",
+    "division": "recreational",
+    "name": "Scarbears"
+    },
+    {
+    "id": "anbu-verizon",
+    "division": "recreational",
+    "name": "Anbu Verizon"
+    },
+    {
+    "id": "borough-boys",
+    "division": "recreational",
+    "name": "Borough Boys"
+    }
+]

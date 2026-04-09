@@ -1,0 +1,42 @@
+[
+  {
+    "id": "game-01",
+    "division": "recreational",
+    "week": 1,
+    "date": "2026-04-19",
+    "time": "4:00 PM",
+    "status": "scheduled",
+    "homeTeamId": "rea",
+    "awayTeamId": "rmbz"
+  },
+  {
+    "id": "game-02",
+    "division": "recreational",
+    "week": 1,
+    "date": "2026-04-19",
+    "time": "5:00 PM",
+    "status": "scheduled",
+    "homeTeamId": "scar-jax",
+    "awayTeamId": "bbk"
+  },
+  {
+    "id": "game-03",
+    "division": "recreational",
+    "week": 1,
+    "date": "2026-04-19",
+    "time": "6:00 PM",
+    "status": "scheduled",
+    "homeTeamId": "iron-bulls",
+    "awayTeamId": "scar-bears"
+  },
+  {
+    "id": "game-04",
+    "division": "recreational",
+    "week": 1,
+    "date": "2026-04-19",
+    "time": "7:00 PM",
+    "status": "scheduled",
+    "homeTeamId": "anbu-verizon",
+    "awayTeamId": "borough-boys"
+  }
+]

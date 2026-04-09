@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jungle Game Entry Tool</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <select id="game-select"></select>
+    
+    <div>
+        <p>Home Team: <span id="home-team-name"></span></p>
+        <p>Away Team: <span id="away-team-name"></span></p>
+        <p>Date: <span id="game-date"></span></p>
+        <p>Week:  <span id="game-week"></span></p>
+    </div>
+
+    <h2 id="home-team-heading"></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>PTS</th>
+                <th>FGM</th>
+                <th>FGA</th>
+                <th>FTM</th>
+                <th>FTA</th>
+                <th>TPM</th>
+                <th>TPA</th>
+                <th>REB</th>
+                <th>AST</th>
+                <th>STL</th>
+                <th>BLK</th>
+                <th>FG%</th>
+                <th>FT%</th>
+                <th>3P%</th>
+            </tr>
+        </thead>
+        <tbody id="home-team-body">
+        <!-- JavaScript will inject player rows here -->
+        </tbody>
+    </table>
+
+    <h2 id="away-team-heading"></h2>
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>PTS</th>
+                <th>FGM</th>
+                <th>FGA</th>
+                <th>FTM</th>
+                <th>FTA</th>
+                <th>TPM</th>
+                <th>TPA</th>
+                <th>REB</th>
+                <th>AST</th>
+                <th>STL</th>
+                <th>BLK</th>
+                <th>PTS</th>
+                <th>FG%</th>
+                <th>FT%</th>
+                <th>3P%</th>
+            </tr>
+        </thead>
+        <tbody id="away-team-body">
+        <!-- JavaScript will inject player rows here -->
+        </tbody>
+    </table>
+    <script src="app.js"></script>
+</body>
+</html>
