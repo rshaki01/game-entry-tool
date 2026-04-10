@@ -59,7 +59,77 @@ async function loadData() {
             awayScore += parseInt(ptsInput.value);
         })
 
-        
+        // calculating boxScore
+        const homeBoxScore = homePlayers.map((p) => {
+            const playerPoints = document.getElementById(`${p.id}-pts`);
+            const playerRebounds = document.getElementById(`${p.id}-reb`);
+            const playerAssists = document.getElementById(`${p.id}-ast`);
+            const playerSteals = document.getElementById(`${p.id}-stl`);
+            const playerBlocks = document.getElementById(`${p.id}-blk`);
+            const playerFGM = document.getElementById(`${p.id}-fgm`);
+            const playerFGA = document.getElementById(`${p.id}-fga`);
+            const playerFgPct = document.getElementById(`${p.id}-fgPct`);
+            const playerFTM = document.getElementById(`${p.id}-ftm`);
+            const playerFTA = document.getElementById(`${p.id}-fta`);
+            const playerFtPct = document.getElementById(`${p.id}-ftPct`);
+            const playerTPM = document.getElementById(`${p.id}-tpm`);
+            const playerTPA = document.getElementById(`${p.id}-tpa`);
+            const playerTpPct = document.getElementById(`${p.id}-tpPct`);
+            
+            return {
+                "playerId": p.id,
+                "points": parseInt(playerPoints.value),
+                "rebounds": parseInt(playerRebounds.value),
+                "assists": parseInt(playerAssists.value),
+                "steals": parseInt(playerSteals.value),
+                "blocks": parseInt(playerBlocks.value),
+                "fgm": parseInt(playerFGM.value),
+                "fga": parseInt(playerFGA.value),
+                "fgPct": parseFloat(playerFgPct.value),
+                "ftm": parseInt(playerFTM.value),
+                "fta": parseInt(playerFTA.value),
+                "ftPct": parseFloat(playerFtPct.value),
+                "tpm": parseInt(playerTPM.value),
+                "tpa": parseInt(playerTPA.value),
+                "tpPct": parseFloat(playerTpPct.value),
+            }
+        })
+
+        const awayBoxScore = awayPlayers.map((p) => {
+            const playerPoints = document.getElementById(`${p.id}-pts`);
+            const playerRebounds = document.getElementById(`${p.id}-reb`);
+            const playerAssists = document.getElementById(`${p.id}-ast`);
+            const playerSteals = document.getElementById(`${p.id}-stl`);
+            const playerBlocks = document.getElementById(`${p.id}-blk`);
+            const playerFGM = document.getElementById(`${p.id}-fgm`);
+            const playerFGA = document.getElementById(`${p.id}-fga`);
+            const playerFgPct = document.getElementById(`${p.id}-fgPct`);
+            const playerFTM = document.getElementById(`${p.id}-ftm`);
+            const playerFTA = document.getElementById(`${p.id}-fta`);
+            const playerFtPct = document.getElementById(`${p.id}-ftPct`);
+            const playerTPM = document.getElementById(`${p.id}-tpm`);
+            const playerTPA = document.getElementById(`${p.id}-tpa`);
+            const playerTpPct = document.getElementById(`${p.id}-tpPct`);
+            
+            return {
+                "playerId": p.id,
+                "points": parseInt(playerPoints.value),
+                "rebounds": parseInt(playerRebounds.value),
+                "assists": parseInt(playerAssists.value),
+                "steals": parseInt(playerSteals.value),
+                "blocks": parseInt(playerBlocks.value),
+                "fgm": parseInt(playerFGM.value),
+                "fga": parseInt(playerFGA.value),
+                "fgPct": parseFloat(playerFgPct.value),
+                "ftm": parseInt(playerFTM.value),
+                "fta": parseInt(playerFTA.value),
+                "ftPct": parseFloat(playerFtPct.value),
+                "tpm": parseInt(playerTPM.value),
+                "tpa": parseInt(playerTPA.value),
+                "tpPct": parseFloat(playerTpPct.value),
+            }
+        })
+
 
         exportObject = {
             "id": gameId,
@@ -71,7 +141,11 @@ async function loadData() {
             "homeTeamId": game.homeTeamId,
             "awayTeamId": game.awayTeamId,
             "homeScore": homeScore,
-            "awayScore": awayScore
+            "awayScore": awayScore,
+            "boxScore": {
+                [game.homeTeamId]: homeBoxScore,
+                [game.awayTeamId]: awayBoxScore
+            }
         };
 
         console.log(exportObject);
