@@ -18,8 +18,8 @@ async function loadData() {
     gameSelect.append(element);
     });
 
+    // display data for the first team in the select dropdown
     updateGameInfo(games[0])
-
     renderPlayerRows(players, games[0].homeTeamId, 'home-team-body');
     renderPlayerRows(players, games[0].awayTeamId, 'away-team-body');
 
@@ -34,6 +34,12 @@ async function loadData() {
         renderPlayerRows(players, game.awayTeamId, 'away-team-body');
         
     });
+
+    // export functionality
+    const exportButton = document.getElementById('exportButton');
+    exportButton.addEventListener('click', function () {
+        alert("Yo")
+    })
 }
 
 loadData();
@@ -79,9 +85,70 @@ function renderPlayerRows(players, teamId, tbodyId) {
             <td><input readonly type="number" id="${player.id}-tpPct" value="0" min="0"></td>                 
         `;
 
+        const ptsInput = row.querySelector(`#${player.id}-pts`);
+        const fgmInput = row.querySelector(`#${player.id}-fgm`);
+        const fgaInput = row.querySelector(`#${player.id}-fga`);
+        const ftmInput = row.querySelector(`#${player.id}-ftm`);
+        const ftaInput = row.querySelector(`#${player.id}-fta`);
+        const tpmInput = row.querySelector(`#${player.id}-tpm`);
+        const tpaInput = row.querySelector(`#${player.id}-tpa`);
+        const rebInput = row.querySelector(`#${player.id}-reb`);
+        const astInput = row.querySelector(`#${player.id}-ast`);
+        const stlInput = row.querySelector(`#${player.id}-stl`);
+        const blkInput = row.querySelector(`#${player.id}-blk`);
+        const fgPctInput = row.querySelector(`#${player.id}-fgPct`);
+        const ftPctInput = row.querySelector(`#${player.id}-ftPct`);
+        const tpPctInput = row.querySelector(`#${player.id}-tpPct`);
+
+        function recalculate() {
+            const fgm = parseInt(fgmInput.value);
+            const tpm = parseInt(tpmInput.value);
+            const ftm = parseInt(ftmInput.value);
+            const fga = parseInt(fgaInput.value);
+            const tpa = parseInt(tpaInput.value);
+            const fta = parseInt(ftaInput.value);
+            
+
+
+            // calculate points
+            if (fgm >= tpm) {
+                ptsInput.value = ((fgm - tpm) * 2) + (tpm * 3) + ftm;
+            } else  {
+                alert("error - There cannot be more three points made (TPM) than the field goals made (FGM). Please add the correct amount of field goals made (FGA).")
+            }
+
+            // calculate fgPct
+            if (fga >=1 && fgm >= 1) {
+                fgPctInput.value = ((fgm/fga) * 100).toFixed(2);
+            }
+
+            //calculate tpPct
+            if (tpa >=1 && tpm >= 1) {
+                tpPctInput.value = ((tpm/tpa) * 100).toFixed(2);
+            }
+
+            //calculate ftPct
+            if (fta >=1 && ftm >= 1) {
+                ftPctInput.value = ((ftm/fta) * 100).toFixed(2);
+            }
+
+            
+        };
+
+        fgmInput.addEventListener('input', recalculate);
+        tpmInput.addEventListener('input', function() {
+            recalculate();
+        })
+        ftmInput.addEventListener('input', recalculate);
+        fgaInput.addEventListener('input', recalculate);
+        tpaInput.addEventListener('input', recalculate);
+        ftaInput.addEventListener('input', recalculate);
+
         tbodyElement.append(row);
     });
 
 
 }
+
+
 
