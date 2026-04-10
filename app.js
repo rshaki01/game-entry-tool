@@ -40,6 +40,26 @@ async function loadData() {
     exportButton.addEventListener('click', function () {
         const gameId = gameSelect.value;
         const game = games.find((game) => game.id === gameId);
+        let homeScore = 0;
+        let awayScore = 0;
+
+        // calculating homeScore
+        const homePlayers = players.filter((p) => p.teamId === game.homeTeamId);
+
+        homePlayers.forEach((p) => {
+            const ptsInput = document.getElementById(`${p.id}-pts`);
+            homeScore += parseInt(ptsInput.value);
+        })
+
+        // calculating awayScore
+        const awayPlayers = players.filter((p) => p.teamId === game.awayTeamId);
+
+        awayPlayers.forEach((p) => {
+            const ptsInput = document.getElementById(`${p.id}-pts`);
+            awayScore += parseInt(ptsInput.value);
+        })
+
+        
 
         exportObject = {
             "id": gameId,
@@ -48,8 +68,10 @@ async function loadData() {
             "date": game.date,
             "time": game.time,
             "status": "completed",
-            "homeTeam": game.homeTeamId,
-            "awayTeam": game.awayTeamId
+            "homeTeamId": game.homeTeamId,
+            "awayTeamId": game.awayTeamId,
+            "homeScore": homeScore,
+            "awayScore": awayScore
         };
 
         console.log(exportObject);
