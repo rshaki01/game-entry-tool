@@ -38,7 +38,21 @@ async function loadData() {
     // export functionality
     const exportButton = document.getElementById('exportButton');
     exportButton.addEventListener('click', function () {
-        alert("Yo")
+        const gameId = gameSelect.value;
+        const game = games.find((game) => game.id === gameId);
+
+        exportObject = {
+            "id": gameId,
+            "division": game.division,
+            "week": game.week,
+            "date": game.date,
+            "time": game.time,
+            "status": "completed",
+            "homeTeam": game.homeTeamId,
+            "awayTeam": game.awayTeamId
+        };
+
+        console.log(exportObject);
     })
 }
 
