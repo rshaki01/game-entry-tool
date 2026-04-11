@@ -59,6 +59,24 @@ async function loadData() {
             awayScore += parseInt(ptsInput.value);
         })
 
+        // validating data to ensure each attempt is >= then each make
+        const allPlayers = [...homePlayers, ...awayPlayers];
+        const isValid = allPlayers.every((p) => {
+            const fgm = parseInt(document.getElementById(`${p.id}-fgm`).value);
+            const fga = parseInt(document.getElementById(`${p.id}-fga`).value);
+            const ftm = parseInt(document.getElementById(`${p.id}-ftm`).value);
+            const fta = parseInt(document.getElementById(`${p.id}-fta`).value);
+            const tpm = parseInt(document.getElementById(`${p.id}-tpm`).value);
+            const tpa = parseInt(document.getElementById(`${p.id}-tpa`).value);
+            return fga >= fgm && fta >= ftm && tpa >= tpm;
+        });
+
+        if (!isValid) {
+            alert("Please ensure attempts are >= makes for all players.");
+            return;
+        }
+
+
         // calculating boxScore
         const homeBoxScore = homePlayers.map((p) => {
             const playerPoints = document.getElementById(`${p.id}-pts`);
@@ -76,9 +94,8 @@ async function loadData() {
             const playerTPA = document.getElementById(`${p.id}-tpa`);
             const playerTpPct = document.getElementById(`${p.id}-tpPct`);
 
-            // validating data to ensure each attempt is >= then each make
-            if (parseInt(playerFGA.value) >= parseInt(playerFGM.value) && parseInt(playerFTA.value) >= parseInt(playerFTM.value) && parseInt(playerTPA.value) >= parseInt(playerTPM.value) ) {
-                return {
+            
+            return {
                 "playerId": p.id,
                 "points": parseInt(playerPoints.value),
                 "rebounds": parseInt(playerRebounds.value),
@@ -94,12 +111,7 @@ async function loadData() {
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
                 "tpPct": parseFloat(playerTpPct.value),
-                }
-            } else (
-                alert ("Please ensure each attempt is >= then each make!")
-            )
-            
-            
+            }
         })
 
         const awayBoxScore = awayPlayers.map((p) => {
@@ -155,7 +167,18 @@ async function loadData() {
             }
         };
 
-        console.log(exportObject);
+        console.log(JSON.stringify(exportObject, null, 2));
+
+        //download JSON
+
+        const jsonString = JSON.stringify(exportObject, null, 2);
+        const blob = new Blob([jsonString], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `${gameId}.json`;
+        a.click();
+
     })
 }
 
