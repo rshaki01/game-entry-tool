@@ -75,8 +75,10 @@ async function loadData() {
             const playerTPM = document.getElementById(`${p.id}-tpm`);
             const playerTPA = document.getElementById(`${p.id}-tpa`);
             const playerTpPct = document.getElementById(`${p.id}-tpPct`);
-            
-            return {
+
+            // validating data to ensure each attempt is >= then each make
+            if (parseInt(playerFGA.value) >= parseInt(playerFGM.value) && parseInt(playerFTA.value) >= parseInt(playerFTM.value) && parseInt(playerTPA.value) >= parseInt(playerTPM.value) ) {
+                return {
                 "playerId": p.id,
                 "points": parseInt(playerPoints.value),
                 "rebounds": parseInt(playerRebounds.value),
@@ -92,7 +94,12 @@ async function loadData() {
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
                 "tpPct": parseFloat(playerTpPct.value),
-            }
+                }
+            } else (
+                alert ("Please ensure each attempt is >= then each make!")
+            )
+            
+            
         })
 
         const awayBoxScore = awayPlayers.map((p) => {
