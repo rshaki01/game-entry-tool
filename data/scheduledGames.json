@@ -6,8 +6,8 @@
     "date": "2026-04-19",
     "time": "4:00 PM",
     "status": "scheduled",
-    "homeTeamId": "rea",
-    "awayTeamId": "rmbz"
+    "homeTeamId": "bbk",
+    "awayTeamId": "scar-bears"
   },
   {
     "id": "game-02",
@@ -16,8 +16,8 @@
     "date": "2026-04-19",
     "time": "5:00 PM",
     "status": "scheduled",
-    "homeTeamId": "scar-jax",
-    "awayTeamId": "bbk"
+    "homeTeamId": "rmbz",
+    "awayTeamId": "borough-boys"
   },
   {
     "id": "game-03",
@@ -26,8 +26,8 @@
     "date": "2026-04-19",
     "time": "6:00 PM",
     "status": "scheduled",
-    "homeTeamId": "iron-bulls",
-    "awayTeamId": "scar-bears"
+    "homeTeamId": "scar-jax",
+    "awayTeamId": "anbu-verizon"
   },
   {
     "id": "game-04",
@@ -36,7 +36,7 @@
     "date": "2026-04-19",
     "time": "7:00 PM",
     "status": "scheduled",
-    "homeTeamId": "anbu-verizon",
-    "awayTeamId": "borough-boys"
+    "homeTeamId": "rea",
+    "awayTeamId": "iron-bulls"
   }
 ]

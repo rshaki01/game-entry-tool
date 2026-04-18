@@ -62,13 +62,13 @@ async function loadData() {
         // validating data to ensure each attempt is >= then each make
         const allPlayers = [...homePlayers, ...awayPlayers];
         const isValid = allPlayers.every((p) => {
-            const fgm = parseInt(document.getElementById(`${p.id}-fgm`).value);
-            const fga = parseInt(document.getElementById(`${p.id}-fga`).value);
+            const twoPM = parseInt(document.getElementById(`${p.id}-twoPM`).value);
+            const twoPA = parseInt(document.getElementById(`${p.id}-twoPA`).value);
             const ftm = parseInt(document.getElementById(`${p.id}-ftm`).value);
             const fta = parseInt(document.getElementById(`${p.id}-fta`).value);
             const tpm = parseInt(document.getElementById(`${p.id}-tpm`).value);
             const tpa = parseInt(document.getElementById(`${p.id}-tpa`).value);
-            return fga >= fgm && fta >= ftm && tpa >= tpm;
+            return twoPA >= twoPM && fta >= ftm && tpa >= tpm;
         });
 
         if (!isValid) {
@@ -84,15 +84,12 @@ async function loadData() {
             const playerAssists = document.getElementById(`${p.id}-ast`);
             const playerSteals = document.getElementById(`${p.id}-stl`);
             const playerBlocks = document.getElementById(`${p.id}-blk`);
-            const playerFGM = document.getElementById(`${p.id}-fgm`);
-            const playerFGA = document.getElementById(`${p.id}-fga`);
-            const playerFgPct = document.getElementById(`${p.id}-fgPct`);
+            const playerTwoPM= document.getElementById(`${p.id}-twoPM`);
+            const playerTwoPA = document.getElementById(`${p.id}-twoPA`);
             const playerFTM = document.getElementById(`${p.id}-ftm`);
             const playerFTA = document.getElementById(`${p.id}-fta`);
-            const playerFtPct = document.getElementById(`${p.id}-ftPct`);
             const playerTPM = document.getElementById(`${p.id}-tpm`);
             const playerTPA = document.getElementById(`${p.id}-tpa`);
-            const playerTpPct = document.getElementById(`${p.id}-tpPct`);
 
             
             return {
@@ -102,15 +99,12 @@ async function loadData() {
                 "assists": parseInt(playerAssists.value),
                 "steals": parseInt(playerSteals.value),
                 "blocks": parseInt(playerBlocks.value),
-                "fgm": parseInt(playerFGM.value),
-                "fga": parseInt(playerFGA.value),
-                "fgPct": parseFloat(playerFgPct.value),
+                "twoPM": parseInt(playerTwoPM.value),
+                "twoPA": parseInt(playerTwoPA.value),
                 "ftm": parseInt(playerFTM.value),
                 "fta": parseInt(playerFTA.value),
-                "ftPct": parseFloat(playerFtPct.value),
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
-                "tpPct": parseFloat(playerTpPct.value),
             }
         })
 
@@ -120,15 +114,12 @@ async function loadData() {
             const playerAssists = document.getElementById(`${p.id}-ast`);
             const playerSteals = document.getElementById(`${p.id}-stl`);
             const playerBlocks = document.getElementById(`${p.id}-blk`);
-            const playerFGM = document.getElementById(`${p.id}-fgm`);
-            const playerFGA = document.getElementById(`${p.id}-fga`);
-            const playerFgPct = document.getElementById(`${p.id}-fgPct`);
+            const playerTwoPM = document.getElementById(`${p.id}-twoPM`);
+            const playerTwoPA = document.getElementById(`${p.id}-twoPA`);
             const playerFTM = document.getElementById(`${p.id}-ftm`);
             const playerFTA = document.getElementById(`${p.id}-fta`);
-            const playerFtPct = document.getElementById(`${p.id}-ftPct`);
             const playerTPM = document.getElementById(`${p.id}-tpm`);
             const playerTPA = document.getElementById(`${p.id}-tpa`);
-            const playerTpPct = document.getElementById(`${p.id}-tpPct`);
             
             return {
                 "playerId": p.id,
@@ -137,15 +128,12 @@ async function loadData() {
                 "assists": parseInt(playerAssists.value),
                 "steals": parseInt(playerSteals.value),
                 "blocks": parseInt(playerBlocks.value),
-                "fgm": parseInt(playerFGM.value),
-                "fga": parseInt(playerFGA.value),
-                "fgPct": parseFloat(playerFgPct.value),
+                "twoPM": parseInt(playerTwoPM.value),
+                "twoPA": parseInt(playerTwoPA.value),
                 "ftm": parseInt(playerFTM.value),
                 "fta": parseInt(playerFTA.value),
-                "ftPct": parseFloat(playerFtPct.value),
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
-                "tpPct": parseFloat(playerTpPct.value),
             }
         })
 
@@ -210,8 +198,8 @@ function renderPlayerRows(players, teamId, tbodyId) {
             <td>${player.number}</td>
             <td>${player.name}</td>
             <td><input readonly type="number" id="${player.id}-pts" value="0" min="0"></td>
-            <td><input type="number" id="${player.id}-fgm" value="0" min="0"></td>
-            <td><input type="number" id="${player.id}-fga" value="0" min="0"></td>
+            <td><input type="number" id="${player.id}-twoPM" value="0" min="0"></td>
+            <td><input type="number" id="${player.id}-twoPA" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-ftm" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-fta" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-tpm" value="0" min="0"></td>
@@ -220,14 +208,11 @@ function renderPlayerRows(players, teamId, tbodyId) {
             <td><input type="number" id="${player.id}-ast" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-stl" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-blk" value="0" min="0"></td>
-            <td><input readonly type="number" id="${player.id}-fgPct" value="0" min="0"></td>
-            <td><input readonly type="number" id="${player.id}-ftPct" value="0" min="0"></td>
-            <td><input readonly type="number" id="${player.id}-tpPct" value="0" min="0"></td>                 
         `;
 
         const ptsInput = row.querySelector(`#${player.id}-pts`);
-        const fgmInput = row.querySelector(`#${player.id}-fgm`);
-        const fgaInput = row.querySelector(`#${player.id}-fga`);
+        const twoPmInput = row.querySelector(`#${player.id}-twoPM`);
+        const twoPaInput = row.querySelector(`#${player.id}-twoPA`);
         const ftmInput = row.querySelector(`#${player.id}-ftm`);
         const ftaInput = row.querySelector(`#${player.id}-fta`);
         const tpmInput = row.querySelector(`#${player.id}-tpm`);
@@ -236,51 +221,23 @@ function renderPlayerRows(players, teamId, tbodyId) {
         const astInput = row.querySelector(`#${player.id}-ast`);
         const stlInput = row.querySelector(`#${player.id}-stl`);
         const blkInput = row.querySelector(`#${player.id}-blk`);
-        const fgPctInput = row.querySelector(`#${player.id}-fgPct`);
-        const ftPctInput = row.querySelector(`#${player.id}-ftPct`);
-        const tpPctInput = row.querySelector(`#${player.id}-tpPct`);
-
+  
         function recalculate() {
-            const fgm = parseInt(fgmInput.value);
+            const twoPM = parseInt(twoPmInput.value);
             const tpm = parseInt(tpmInput.value);
-            const ftm = parseInt(ftmInput.value);
-            const fga = parseInt(fgaInput.value);
-            const tpa = parseInt(tpaInput.value);
-            const fta = parseInt(ftaInput.value);
-            
-
+            const ftm = parseInt(ftmInput.value)        
 
             // calculate points
-            if (fgm >= tpm) {
-                ptsInput.value = ((fgm - tpm) * 2) + (tpm * 3) + ftm;
-            } else  {
-                alert("error - There cannot be more three points made (TPM) than the field goals made (FGM). Please add the correct amount of field goals made (FGA).")
-            }
-
-            // calculate fgPct
-            if (fga >=1 && fgm >= 1) {
-                fgPctInput.value = ((fgm/fga) * 100).toFixed(2);
-            }
-
-            //calculate tpPct
-            if (tpa >=1 && tpm >= 1) {
-                tpPctInput.value = ((tpm/tpa) * 100).toFixed(2);
-            }
-
-            //calculate ftPct
-            if (fta >=1 && ftm >= 1) {
-                ftPctInput.value = ((ftm/fta) * 100).toFixed(2);
-            }
-
+            ptsInput.value = (twoPM * 2) + (tpm * 3) + ftm;
             
         };
 
-        fgmInput.addEventListener('input', recalculate);
+        twoPmInput.addEventListener('input', recalculate);
         tpmInput.addEventListener('input', function() {
             recalculate();
         })
         ftmInput.addEventListener('input', recalculate);
-        fgaInput.addEventListener('input', recalculate);
+        twoPaInput.addEventListener('input', recalculate);
         tpaInput.addEventListener('input', recalculate);
         ftaInput.addEventListener('input', recalculate);
 
