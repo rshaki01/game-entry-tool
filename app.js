@@ -90,21 +90,24 @@ async function loadData() {
             const playerFTA = document.getElementById(`${p.id}-fta`);
             const playerTPM = document.getElementById(`${p.id}-tpm`);
             const playerTPA = document.getElementById(`${p.id}-tpa`);
+            const playerTO = document.getElementById(`${p.id}-to`);
+
 
             
             return {
                 "playerId": p.id,
-                "points": parseInt(playerPoints.value),
-                "rebounds": parseInt(playerRebounds.value),
-                "assists": parseInt(playerAssists.value),
-                "steals": parseInt(playerSteals.value),
-                "blocks": parseInt(playerBlocks.value),
-                "twoPM": parseInt(playerTwoPM.value),
-                "twoPA": parseInt(playerTwoPA.value),
+                "pts": parseInt(playerPoints.value),
+                "reb": parseInt(playerRebounds.value),
+                "ast": parseInt(playerAssists.value),
+                "stl": parseInt(playerSteals.value),
+                "blk": parseInt(playerBlocks.value),
+                "twoPm": parseInt(playerTwoPM.value),
+                "twoPa": parseInt(playerTwoPA.value),
                 "ftm": parseInt(playerFTM.value),
                 "fta": parseInt(playerFTA.value),
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
+                "to": parseInt(playerTO.value),
             }
         })
 
@@ -120,20 +123,22 @@ async function loadData() {
             const playerFTA = document.getElementById(`${p.id}-fta`);
             const playerTPM = document.getElementById(`${p.id}-tpm`);
             const playerTPA = document.getElementById(`${p.id}-tpa`);
+            const playerTO = document.getElementById(`${p.id}-to`);
             
             return {
                 "playerId": p.id,
-                "points": parseInt(playerPoints.value),
-                "rebounds": parseInt(playerRebounds.value),
-                "assists": parseInt(playerAssists.value),
-                "steals": parseInt(playerSteals.value),
-                "blocks": parseInt(playerBlocks.value),
-                "twoPM": parseInt(playerTwoPM.value),
-                "twoPA": parseInt(playerTwoPA.value),
+                "pts": parseInt(playerPoints.value),
+                "reb": parseInt(playerRebounds.value),
+                "ast": parseInt(playerAssists.value),
+                "stl": parseInt(playerSteals.value),
+                "blk": parseInt(playerBlocks.value),
+                "twoPm": parseInt(playerTwoPM.value),
+                "twoPa": parseInt(playerTwoPA.value),
                 "ftm": parseInt(playerFTM.value),
                 "fta": parseInt(playerFTA.value),
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
+                "to": parseInt(playerTO.value),
             }
         })
 
@@ -208,6 +213,8 @@ function renderPlayerRows(players, teamId, tbodyId) {
             <td><input type="number" id="${player.id}-ast" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-stl" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-blk" value="0" min="0"></td>
+            <td><input type="number" id="${player.id}-to" value="0" min="0"></td>
+
         `;
 
         const ptsInput = row.querySelector(`#${player.id}-pts`);
@@ -221,6 +228,7 @@ function renderPlayerRows(players, teamId, tbodyId) {
         const astInput = row.querySelector(`#${player.id}-ast`);
         const stlInput = row.querySelector(`#${player.id}-stl`);
         const blkInput = row.querySelector(`#${player.id}-blk`);
+        const toInput = row.querySelector(`#${player.id}-to`);
   
         function recalculate() {
             const twoPM = parseInt(twoPmInput.value);
