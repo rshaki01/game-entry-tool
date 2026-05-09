@@ -91,8 +91,8 @@ async function loadData() {
             const playerTPM = document.getElementById(`${p.id}-tpm`);
             const playerTPA = document.getElementById(`${p.id}-tpa`);
             const playerTO = document.getElementById(`${p.id}-to`);
-
-
+            const playerSubstituteStatus = document.getElementById(`${p.id}-substitute`);
+            const absentStatus = document.getElementById(`${p.id}-absence`);
             
             return {
                 "playerId": p.id,
@@ -108,6 +108,8 @@ async function loadData() {
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
                 "to": parseInt(playerTO.value),
+                "substitute": playerSubstituteStatus.checked,
+                "absence": absentStatus.checked
             }
         })
 
@@ -124,6 +126,9 @@ async function loadData() {
             const playerTPM = document.getElementById(`${p.id}-tpm`);
             const playerTPA = document.getElementById(`${p.id}-tpa`);
             const playerTO = document.getElementById(`${p.id}-to`);
+            const playerSubstituteStatus = document.getElementById(`${p.id}-substitute`);
+            const absentStatus = document.getElementById(`${p.id}-absence`);
+
             
             return {
                 "playerId": p.id,
@@ -139,6 +144,8 @@ async function loadData() {
                 "tpm": parseInt(playerTPM.value),
                 "tpa": parseInt(playerTPA.value),
                 "to": parseInt(playerTO.value),
+                "substitute": playerSubstituteStatus.checked,
+                "absence": absentStatus.checked
             }
         })
 
@@ -214,7 +221,8 @@ function renderPlayerRows(players, teamId, tbodyId) {
             <td><input type="number" id="${player.id}-stl" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-blk" value="0" min="0"></td>
             <td><input type="number" id="${player.id}-to" value="0" min="0"></td>
-
+            <td><input type="checkbox" id="${player.id}-substitute"></td>
+            <td><input type="checkbox" id="${player.id}-absence"></td>
         `;
 
         const ptsInput = row.querySelector(`#${player.id}-pts`);
