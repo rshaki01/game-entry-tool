@@ -308,7 +308,7 @@
     {
     "id": "scar-bears-p10",
     "teamId": "scar-bears",
-    "name": "Laurence Guinto",
+    "name": "Gabriel Esraquin",
     "number": 23
   },
   {
@@ -322,6 +322,12 @@
     "teamId": "scar-bears",
     "name": "Oneal Morrison",
     "number": 11
+  },
+  {
+    "id": "scar-bears-p13",
+    "teamId": "scar-bears",
+    "name": "Johnny Joshua",
+    "number": 2
   },
   {
     "id": "anbu-verizon-p1",
